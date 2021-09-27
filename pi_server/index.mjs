@@ -1,11 +1,13 @@
 import express from 'express';
 import path from 'path';
+import Commander from './Commander';
 
 const __dirname = path.resolve();
 const port = 80
 
 
 const app = express()
+
 app.use(express.static(path.join(__dirname,'../pi_dashboard/public')))
 
 
@@ -14,7 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/data', (req, res) => {
-  let test = "test"
+  let test = Commander.GET_STATUS_SERVICES()
   res.json({test})
 })
 
